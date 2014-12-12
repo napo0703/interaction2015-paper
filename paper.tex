@@ -40,9 +40,9 @@
 \begin{document}
 
 \title{降臨鉄道: 模型モノレールを利用した遠隔通信}
-\etitle{Camera on Rails}
+\etitle{Camera on Rails: Telecommunication with Model Monorail Trains}
 
-\paffiliate{KU}{慶應義塾大学 環境情報学部\\
+\affiliate{KU}{慶應義塾大学 環境情報学部\\
 Faculty of Environment and Infomation Studies, Keio University}
 
 \author{山田 尚昭}{Naoaki Yamada}{KU}
@@ -93,7 +93,10 @@ refer its source file which is distributed with the style files.
 %2
 \section{関連研究}
 
-Double Robotics\cite{Double}のDoubleは遠隔地から操作可能な高さ約1.2mのテレプレゼンス
+Double RoboticsのDouble\footnote{
+  \textsf{http://www.doublerobotics.com}
+}
+は遠隔地から操作可能な高さ約1.2mのテレプレゼンス
 ロボットである．Doubleのような人間の分身を模したロボットは，卓上に置かれた
 小型のロボットに比べて移動できる範囲は大きいが，他の人の邪魔になったりする
 ことがある．
@@ -115,15 +118,20 @@ Jouppiのシステム\cite{Jouppi:2002:FST:587078.587128}では自由に動き�
 降臨鉄道にはAndroidスマートフォンが搭載されており，サーバからの命令を受け取り
 DCモータを制御する．DCモータの制御は440Hzの正弦波のMP3音声ファイルを再生し，
 イヤホン端子から擬似的な交流電源を得てリレーを駆動させることによって行っている．
-動画の配信にはAndroidアプリケーションIP Webcam\cite{ipwebcam}を使用し，MotionJPEG形式の
+動画の配信にはAndroidアプリケーションIP Webcam\footnote{
+  \textsf{https://play.google.com/store/apps/details?id=com.pas.webcam}
+}
+を使用し，MotionJPEG形式の
 影像をHTTP通信で配信している．
 
 WebサーバにはAndroid用のページとクライアント用のページが用意されている．
 クライアント用ページでは降臨鉄道のカメラからの影像の表示と移動の命令をし，
 Android用ページでは移動の命令に従って音声ファイルを再生している．
 
-操作はLindaという並列計算プリミティブをWebサーバ上に実装したlinda-server\cite{linda}を
-用いて実装している．
+操作はLindaという並列計算プリミティブをWebサーバ上に実装したlinda-server\footnote{
+  \textsf{}
+}
+を用いて実装している．
 
 %4
 \section{まとめと展望}
