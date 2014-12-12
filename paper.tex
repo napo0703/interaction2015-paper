@@ -1,0 +1,144 @@
+%%
+%% 研究報告用スイッチ
+%% [techreq]
+%%
+%% 欧文表記無しのスイッチ(etitle,jkeyword,eabstract,ekeywordは任意)
+%% [noauthor]
+%%
+
+%\documentclass[submit,techreq]{ipsj}
+\documentclass[submit,techreq]{ipsj}
+
+\usepackage[dvips]{graphicx}
+\usepackage{latexsym}
+
+\def\Underline{\setbox0\hbox\bgroup\let\\\endUnderline}
+\def\endUnderline{\vphantom{y}\egroup\smash{\underline{\box0}}\\}
+\def\|{\verb|}
+
+
+\setcounter{巻数}{53}%vol53=2012
+\setcounter{号数}{2}
+\setcounter{page}{1}
+
+% インタラクション特有の設定。印刷工程で柱・ノンブルの埋め込みを行う。
+\makeatletter
+\pagestyle{empty}
+\def\@oddhead{}%
+\def\@evenhead{}%
+\def\ps@IPSJTITLEheadings{}
+\makeatother
+
+% このソースファイルは，情報処理学会が研究会・シンポジウム用に新しく定め，提供
+% している共通テンプレートに対し，インタラクションにおける製版工程の差異上必要と
+% なるレイアウト要素について最低限の改変を施したものです．
+% インタラクションにおける原稿作成上の注意や，提出先などの指示は，
+% http://www.interaction-ipsj.org/2015/submission の案内に従ってください．
+% 本文は，研究会・シンポジウムの原稿を作成する上での一般的な注意になっています．
+
+
+\begin{document}
+
+\title{降臨鉄道: 模型モノレールを利用した遠隔通信}
+\etitle{Camera on Rails}
+
+\paffiliate{KU}{慶應義塾大学 環境情報学部\\
+Faculty of Environment and Infomation Studies, Keio University}
+
+\author{山田 尚昭}{Naoaki Yamada}{KU}
+\author{増井 俊之}{Toshiyuki Masui}{KU}
+
+\begin{abstract}
+現代では2ちゃんねる等に有名人が書き込みをすることが降臨と呼ばれており、降臨の
+場では普段雲の上の存在である有名人が、その場の人々と親しく交流をしている．
+我々はこのネット上の降臨を実世界に実現することで、研究室OBと現役学生のコミュ
+ニケーションを実現できるのではないかと考えた．さらに、天井を移動するモノレール
+型の鉄道玩具を用いて、従来の遠隔コミュニケーションシステムには無い自由な移動と
+より広い視野を手に入れた．
+\end{abstract}
+
+
+%\begin{jkeyword}
+%情報処理学会論文誌ジャーナル，\LaTeX，スタイルファイル，べからず集
+%\end{jkeyword}
+%
+\begin{eabstract}
+This document is a guide to prepare a draft for submitting to IPSJ
+Journal, and the final camera-ready manuscript of a paper to appear in
+IPSJ Journal, using {\LaTeX} and special style files.  Since this
+document itself is produced with the style files, it will help you to
+refer its source file which is distributed with the style files.
+\end{eabstract}
+%
+%\begin{ekeyword}
+%IPSJ Journal, \LaTeX, style files, ``Dos and Dont's'' list
+%\end{ekeyword}
+
+\maketitle
+
+%1
+\section{はじめに}
+
+遠隔地の人とあたかも同じ場所にいるかのような感覚を強化するテレプレゼンスの
+システムの研究は盛んに行われている．今日ではビデオ会議システムや遠隔操作可能な
+人間を模したロボットなどが普及しつつある．
+
+以前に研究室では卓上を動き回ることのできるロボットを介した遠隔
+コミュニケーション支援システムを製作したが，動ける範囲に制限があったり
+障害物に阻まれてカメラからの映像が見られなかったりすることがあった．
+
+何にも邪魔をされることのない部屋の天井を移動する遠隔情報共有システム
+降臨鉄道を提案する．
+
+%2
+\section{関連研究}
+
+Double RoboticsのDoubleは遠隔地から操作可能な高さ約1.2mのテレプレゼンス
+ロボットである．Doubleのような人間の分身を模したロボットは，卓上に置かれた
+小型のロボットに比べて移動できる範囲は大きいが，他の人の邪魔になったりする
+ことがある．
+\cite{Hirota:Korin}
+
+\footnotetext{}
+
+%3
+\section{降臨鉄道}
+
+ユーザはWebページにアクセスすることで降臨鉄道が設置された遠隔地のリアルタイム
+映像を見たり，降臨鉄道を操作して移動させることができる．
+
+降臨鉄道システムは，Androidスマートフォンが取り付けられた懸垂式モノレール型の
+鉄道玩具「降臨鉄道」とWebサーバ，linda-serverから構成される．
+
+降臨鉄道にはAndroidスマートフォンが搭載されており，サーバからの命令を受け取り
+DCモータを制御する．DCモータの制御は440Hzの正弦波のMP3音声ファイルを再生し，
+イヤホン端子から擬似的な交流電源を得てリレーを駆動させることによって行っている．
+動画の配信にはAndroidアプリケーションIP Webcamを使用し，MotionJPEG形式の
+影像をHTTP通信で配信している．
+
+WebサーバにはAndroid用のページとクライアント用のページが用意されている．
+クライアント用ページでは降臨鉄道のカメラからの影像の表示と移動の命令をし，
+Android用ページでは移動の命令に従って音声ファイルを再生している．
+
+操作はLindaという並列計算プリミティブをWebサーバ上に実装したlinda-serverを
+用いて実装している．
+
+%4
+\section{まとめと展望}
+
+遠隔イベント参加とか．
+今回のデモで紹介したシステムは現在，研究室内で実際の運用を通じて実験中である．
+降臨鉄道は多くの人が集まるイベント会場などで遠隔イベント参加システムとして利用
+できると考える．
+
+また，将来的には目的に応じたロボットを複数個用意し，世代間を超えてより活発な
+研究活動ができるようにしたいと考えている．
+
+% \begin{acknowledgment}
+% 本研究に協力していただいた増井研のメンバーに感謝いたします．
+% \end{acknowledgment}
+
+\bibliographystyle{ipsjsort}
+\bibliography{paper}
+
+\end{document}
