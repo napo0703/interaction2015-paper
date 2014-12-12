@@ -83,8 +83,8 @@ refer its source file which is distributed with the style files.
 システムの研究は盛んに行われている．今日ではビデオ会議システムや遠隔操作可能な
 人間を模したロボットなどが普及しつつある．
 
-以前に研究室では卓上を動き回ることのできるロボットを介した遠隔
-コミュニケーション支援システムを製作したが，動ける範囲に制限があったり
+以前に研究室では卓上を動き回ることのできるロボットを介した遠隔コミュニケーション
+支援システムを製作した\cite{Hirota:Korin}が，動ける範囲に制限があったり
 障害物に阻まれてカメラからの映像が見られなかったりすることがあった．
 
 何にも邪魔をされることのない部屋の天井を移動する遠隔情報共有システム
@@ -93,11 +93,13 @@ refer its source file which is distributed with the style files.
 %2
 \section{関連研究}
 
-Double RoboticsのDoubleは遠隔地から操作可能な高さ約1.2mのテレプレゼンス
+Double Robotics\cite{Double}のDoubleは遠隔地から操作可能な高さ約1.2mのテレプレゼンス
 ロボットである．Doubleのような人間の分身を模したロボットは，卓上に置かれた
 小型のロボットに比べて移動できる範囲は大きいが，他の人の邪魔になったりする
 ことがある．
-\cite{Hirota:Korin}
+
+Jouppiのシステム\cite{Jouppi:2002:FST:587078.587128}では自由に動き回れるロボットで遠隔地を訪れられる．大掛かりな
+操作室が必要だが、現地での活動能力は高い．
 
 \footnotetext{}
 
@@ -113,14 +115,14 @@ Double RoboticsのDoubleは遠隔地から操作可能な高さ約1.2mのテレ�
 降臨鉄道にはAndroidスマートフォンが搭載されており，サーバからの命令を受け取り
 DCモータを制御する．DCモータの制御は440Hzの正弦波のMP3音声ファイルを再生し，
 イヤホン端子から擬似的な交流電源を得てリレーを駆動させることによって行っている．
-動画の配信にはAndroidアプリケーションIP Webcamを使用し，MotionJPEG形式の
+動画の配信にはAndroidアプリケーションIP Webcam\cite{ipwebcam}を使用し，MotionJPEG形式の
 影像をHTTP通信で配信している．
 
 WebサーバにはAndroid用のページとクライアント用のページが用意されている．
 クライアント用ページでは降臨鉄道のカメラからの影像の表示と移動の命令をし，
 Android用ページでは移動の命令に従って音声ファイルを再生している．
 
-操作はLindaという並列計算プリミティブをWebサーバ上に実装したlinda-serverを
+操作はLindaという並列計算プリミティブをWebサーバ上に実装したlinda-server\cite{linda}を
 用いて実装している．
 
 %4
